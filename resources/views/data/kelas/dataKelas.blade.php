@@ -57,11 +57,6 @@
 
         .dropdown-menu {
             z-index: 9999 !important;
-            /* Pastikan dropdown selalu di atas */
-            position: absolute !important;
-            /* Jangan biarkan Bootstrap mengubahnya */
-            transform: translate3d(0px, 0px, 0px) !important;
-            will-change: transform;
         }
 
 
@@ -162,7 +157,7 @@
 
                     @forelse ($kelas as $item)
                     <div class="col-md-4">
-                        <div class="card mb-3 shadow-sm card-hover" style="padding: 30px; border-radius: 10px;">
+                        <div class="card mb-3 shadow-sm card-hover" style="padding: 30px; border-radius: 10px; overflow: visible;">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <div class="mb-0" style="font-size: 18px">{{ $item->kelas ?? '-'  }} {{ $item->name_kelas ?? '-' }}</div>
@@ -170,7 +165,7 @@
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <a href="{{ route('siswa.kelas', ['id' => $item->id]) }}" class="btn btn-hover rounded-pill">Detail</a>
-                                    <button class="btn dropdown-btn" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <button class="btn dropdown-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-boundary="viewport">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -332,33 +327,7 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-                document.querySelectorAll(".dropdown-btn").forEach(function(btn) {
-                    btn.addEventListener("click", function() {
-                        let dropdownMenu = this.nextElementSibling;
 
-                        // Hapus semua dropdown yang sudah aktif
-                        document.querySelectorAll(".dropdown-menu").forEach(menu => {
-                            if (menu !== dropdownMenu) {
-                                menu.style.zIndex =
-                                "9999"; // Pastikan semua dropdown tetap di atas
-                            }
-                        });
-
-                        // Pastikan dropdown saat ini di atas semua elemen
-                        dropdownMenu.style.zIndex = "10000";
-                    });
-                });
-
-                // Tutup dropdown saat klik di luar
-                document.addEventListener("click", function(event) {
-                    if (!event.target.matches(".dropdown-btn")) {
-                        document.querySelectorAll(".dropdown-menu").forEach(menu => {
-                            menu.style.zIndex = "9999";
-                        });
-                    }
-                });
-            });
 
 
 
