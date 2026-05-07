@@ -1,4 +1,4 @@
-﻿@extends('layout.main')
+@extends('layout.main')
 @section('content')
     <!DOCTYPE html>
     <html lang="en">
@@ -15,8 +15,8 @@
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
                     <div class="row">
-                        <div class="card mb-3">
-                            <div class="card-body">
+                        <div class="card mb-3" style="overflow: visible;">
+                            <div class="card-body" style="overflow: visible;">
                                 <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
                                     <div class="d-md-flex d-block">
                                         <h5 class="mb-0">Data Siswa </h5>
@@ -43,7 +43,7 @@
                                         <!-- Dropdown Tambah -->
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-boundary="viewport">
                                                 <i class="bi bi-plus-lg"></i> <span class="d-none d-md-inline">Tambah</span>
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end">
@@ -64,7 +64,7 @@
                                                             </button>
                                                         </form>
                                                     </button>
-                                                </li>
+                                                </li>\
                                             </ul>
                                         </div>
                                     </div>
@@ -389,5 +389,3 @@
     });
     </script>
 @endsection
-
-
