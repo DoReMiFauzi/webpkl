@@ -140,6 +140,20 @@
                                     @endforeach
                                 </select>
                             </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Tahun Ajaran <span class="text-danger">*</span></label>
+                                <select class="form-select" name="tahun_ajaran_id" required>
+                                    <option value="">-- Pilih Tahun --</option>
+                                    @foreach ($tahunAjaran as $thn)
+                                        {{-- GANTI $siswa MENJADI $dataPribadi DI SINI --}}
+                                        <option value="{{ $thn->id }}" 
+                                            {{ (old('tahun_ajaran_id', $dataPribadi->tahun_ajaran_id) == $thn->id) ? 'selected' : '' }}>
+                                            {{ $thn->tahun_ajaran }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
                             <div class="col-12 mb-3">
                                 <label class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>

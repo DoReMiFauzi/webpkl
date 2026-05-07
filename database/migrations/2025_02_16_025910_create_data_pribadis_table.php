@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('agama');
             $table->string('tempat_lhr');
             $table->date('tgl_lahir');
+            $table->foreignId('tahun_ajaran_id')->constrained()->onDelete('cascade');
             $table->string('email')->unique();
 
             $table->string('name_ayh');

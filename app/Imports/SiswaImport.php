@@ -21,8 +21,9 @@ class SiswaImport implements ToModel, WithStartRow // <-- Implementasikan
             'nip'      => $row[1], // Kolom B (NIS)
             'kelas_id'    => $row[2], // Kolom C (Kelas)
             'konke_id'   => $row[3], // Kolom D (Konke)
-            'email'    => $row[4], // Kolom E (Email)
-            'password' => Hash::make($row[5]), // Kolom F (Password)
+            'tahun_ajaran_id'   => $row[4], // Kolom E (Tahun ajaran)
+            'email'    => $row[5], // Kolom F (Email)
+            'password' => Hash::make($row[6]), // Kolom G (Password)
             'role'     => 'siswa',
         ]);
     }

@@ -22,6 +22,7 @@ class DataPribadi extends Model
         'agama',
         'tempat_lhr',
         'tgl_lahir',
+        'tahun_ajaran_id',
         'email',
 
         'name_ayh',
@@ -61,5 +62,10 @@ class DataPribadi extends Model
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'kelas_id', 'id');
+    }
+
+    public function tahunAjaran()
+    {
+        return $this->belongsTo(TahunAjaran::class);
     }
 }

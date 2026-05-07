@@ -20,7 +20,6 @@ class User extends Authenticatable
         'pembimbing_id',
         'kelas_id',
         'konke_id',
-        'tahun_ajaran',
         'lokasi_pkl_id',
         'profile_photo'
     ];

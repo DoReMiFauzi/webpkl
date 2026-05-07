@@ -26,7 +26,6 @@ class UsersController extends Controller
             'nip' => 'required|unique:users,nip',
             'kelas_id' => 'required|exists:kelas,id',
             'konke_id' => 'required|exists:konkes,id',
-            'tahun_ajaran' => 'required|string|max:9',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6'
         ]);
@@ -38,7 +37,6 @@ class UsersController extends Controller
             'kelas_id' => $request->kelas_id,   // foreign key ke tabel kelas
             'konke_id' => $request->konke_id,   // foreign key ke tabel konkes
             'email' => $request->email,
-            'tahun_ajaran' => $request->tahun_ajaran,
             'password' => Hash::make($request->password),
             'role' => 'siswa'
         ]);

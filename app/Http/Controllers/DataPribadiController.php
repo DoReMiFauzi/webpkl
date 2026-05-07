@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Konke;
+use App\Models\tahunAjaran;
 use App\Models\DataPribadi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,10 @@ class DataPribadiController extends Controller
         $dataPribadi = Auth::user()->dataPribadi ?? new DataPribadi();
         $siswa = User::with('siswa', 'kelas', 'konke')->where('id', Auth::id())->first();
         $konke = Konke::all();
+        $tahunAjaran = tahunAjaran::all();
         $kelas = Kelas::all();
-        return view('siswa.data_pribadi.form', compact('dataPribadi', 'siswa', 'kelas', 'konke'));
+
+        return view('siswa.data_pribadi.form', compact('dataPribadi', 'siswa', 'kelas', 'konke', 'tahunAjaran'));
     }
 
 public function store(Request $request)
@@ -37,6 +40,7 @@ public function store(Request $request)
             'agama' => 'required|string',
             'tempat_lhr' => 'required|string',
             'tgl_lahir' => 'nullable|date',
+            'tahun_ajaran_id' => 'required|exists:tahun_ajaran,id',
             'email' => 'required|email|unique:data_pribadis,email,' . ($dataPribadi->id ?? 'null') . ',id',
 
             'name_ayh' => 'required|string|max:255',
@@ -72,6 +76,7 @@ public function store(Request $request)
             'email' => $validated['email'],
             'kelas_id' => $validated['kelas_id'],
             'konke_id' => $validated['konke_id'],
+            'tahun_ajaran_id' => $validated['tahun_ajaran_id'],
         ]);
 
         if ($request->ttd_ortu_option === 'manual') {
@@ -105,6 +110,7 @@ public function store(Request $request)
                     'name' => $request->name_ayh,
                     'nip' => $request->nik_ayh,
                     'email' => $request->email_ortu,
+                    'tahun_ajaran_id' => $request->tahun_ajaran_id,  // foreign key ke tabel tahun
                     'password' => Hash::make($request->nik_ayh),
                     'role' => 'orangtua',
                 ]);
