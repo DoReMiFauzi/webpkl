@@ -144,7 +144,7 @@
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Tahun Ajaran <span class="text-danger">*</span></label>
                                 <select class="form-select" name="tahun_ajaran_id" required>
-                                    <option value="">-- Pilih Tahun --</option>
+                                    <option value="" disabled selected>-- Pilih Tahun --</option>
                                     @foreach ($tahunAjaran as $thn)
                                         {{-- GANTI $siswa MENJADI $dataPribadi DI SINI --}}
                                         <option value="{{ $thn->id }}" 

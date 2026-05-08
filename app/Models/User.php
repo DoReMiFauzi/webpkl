@@ -16,6 +16,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'nip',
         'iduka_id',
         'pembimbing_id',
         'kelas_id',

@@ -1,0 +1,6 @@
+file yang di tambah :
+1. tahunAjaran.php \ Models
+
+file yang di edit : 
+1. DataPribadi.php \ Models
+2. DataPribadiController \ Controller 
