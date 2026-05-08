@@ -12,21 +12,40 @@
 
     <body>
         <div class="container-fluid">
-            <div class="content-wrapper">
-                <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="row">
-                        <div class="card mb-3" style="overflow: visible;">
-                            <div class="card-body" style="overflow: visible;">
-                                <div class="d-flex flex-wrap justify-content-between align-items-center mb-2">
-                                    <div class="d-md-flex d-block">
-                                        <h5 class="mb-0">Data Siswa </h5>
+            <div class="content-wrapper" style="overflow: visible !important;">
+                <div class="container-xxl flex-grow-1 container-p-y" style="overflow: visible !important;">
 
+                        </div>
+                        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="searchModalLabel">Cari Siswa</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
-                                    <div class="d-flex gap-2 ms-auto">
+                                    <div class="modal-body">
+                                        <form action="#">
+                                            <input type="text" name="search" class="form-control"
+                                                placeholder="Cari Siswa...">
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">Cari</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <div class="card shadow-sm border-0 mb-4" style="overflow: visible;">
+                                <div class="card-header d-flex justify-content-between align-items-center bg-white py-3" style="overflow: visible; position: relative; z-index: 99;">
+                                    <h5 class="mb-0">Data Siswa</h5>
+                                    <div class="d-flex gap-2">
                                         <!-- Tombol Kembali -->
                                         <a href="{{ route('kelas.index') }}"
-                                            class="btn btn-primary btn-back btn-sm shadow-sm">
-                                            <i class="bi bi-arrow-left-circle"></i>
+                                            class="btn btn-primary btn-sm shadow-sm">
+                                            <i class="bi bi-arrow-left"></i>
                                             <span class="d-none d-md-inline">Kembali</span>
                                         </a>
 
@@ -36,66 +55,43 @@
                                             <i class="bi bi-search"></i>
                                             <span class="d-none d-md-inline">Search</span>
                                         </button>
+                                        
                                         <a href="{{ route('siswa.download-template') }}"
                                             class="btn btn-success btn-sm d-flex align-items-center">
-                                            Download Template Excel
+                                            <i class="bi bi-download me-1"></i>
+                                            <span class="d-none d-md-inline">Template</span>
                                         </a>
+
                                         <!-- Dropdown Tambah -->
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                                data-bs-toggle="dropdown" aria-expanded="false" data-bs-boundary="viewport">
+                                                data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-plus-lg"></i> <span class="d-none d-md-inline">Tambah</span>
                                             </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
+                                            <ul class="dropdown-menu dropdown-menu-end shadow" style="z-index: 9999 !important;">
                                                 <li>
                                                     <button type="button" class="dropdown-item" data-bs-toggle="modal"
                                                         data-bs-target="#tambahSiswaModal">
                                                         Tambah Data Manual
                                                     </button>
-                                                    <button class="dropdown-item" type="button">
-                                                        <form action="{{ route('siswa.import') }}" method="POST"
-                                                            enctype="multipart/form-data">
-                                                            @csrf
-                                                            <input type="file" name="file" class="d-none"
-                                                                id="fileInput" required onchange="this.form.submit()">
-                                                            <button type="button" class="dropdown-item"
-                                                                onclick="document.getElementById('fileInput').click();">
-                                                                Import Excel
-                                                            </button>
-                                                        </form>
-                                                    </button>
-                                                </li>\
+                                                </li>
+                                                <li>
+                                                    <form action="{{ route('siswa.import') }}" method="POST"
+                                                        enctype="multipart/form-data" class="m-0">
+                                                        @csrf
+                                                        <input type="file" name="file" class="d-none"
+                                                            id="fileInput" required onchange="this.form.submit()">
+                                                        <button type="button" class="dropdown-item"
+                                                            onclick="document.getElementById('fileInput').click();">
+                                                            Import Excel
+                                                        </button>
+                                                    </form>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="searchModalLabel">Cari Siswa</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="#">
-                                                <input type="text" name="search" class="form-control"
-                                                    placeholder="Cari Siswa...">
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-primary btn-sm">Cari</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mt-3">
-                            <div class="card shadow-sm border-0 mb-4">
-                                <div class="card-body">
+                                <div class="card-body" style="position: relative; z-index: 1;">
                                     <div class="table-responsive text-nowrap">
                                         <table class="table table-hover" style="text-align: center">
                                             <thead>
@@ -143,7 +139,7 @@
                                                                     @method('DELETE')
                                                                     <button type="submit"
                                                                         class="delete-btn btn btn-danger btn-sm">
-                                                                        <i class="fas fa-trash-alt3"></i></button>
+                                                                        <i class="fas fa-trash"></i></button>
                                                                 </form>
                                                             </div>
                                                         </td>

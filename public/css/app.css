@@ -332,7 +332,7 @@ nav.layout-navbar {
     border-radius: var(--radius-lg) !important;
     box-shadow: var(--shadow-sm) !important;
     transition: box-shadow 0.2s ease, transform 0.2s ease !important;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .card:hover {
@@ -531,7 +531,8 @@ nav.layout-navbar {
 
 .table-responsive {
     border-radius: var(--radius-md);
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: visible;
 }
 
 /* =============================================
